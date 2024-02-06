@@ -10,6 +10,10 @@ function Navbar() {
       <Link to="/projects">
         <button>Projects</button>
       </Link>
+
+      <Link to="/projects/create">
+        <button>Create New Project</button>
+      </Link>
     </nav>
   );
 }

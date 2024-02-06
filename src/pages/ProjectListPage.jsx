@@ -1,6 +1,8 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 
+import {Link} from 'react-router-dom'
+
   /* 
     1. create a state to hold the value for all my projects
 
@@ -31,7 +33,9 @@ function ProjectListPage() {
         {projects.map((oneProject)=>{
             return(
                 <div key={oneProject.id} className='ProjectCard card'>
+                    <Link to={`/projects/${oneProject.id}`}>
                     <h3>{oneProject.title}</h3>
+                    </Link>
                 </div>
             )
         })}
