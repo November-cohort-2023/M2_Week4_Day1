@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -11,8 +11,20 @@ function EditProjectPage() {
     const {projectId} = useParams()
     console.log(projectId)
 
+    const navigate = useNavigate()
+
     function handleSubmit(e){
         e.preventDefault()
+
+        let editedProject = {title:title,description:description}
+
+        axios.put(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`,editedProject)
+        .then((updatedProjectFromAPI)=>{
+            navigate(`/projects/${updatedProjectFromAPI.data.id}`)
+        })
+        .catch(()=>{
+
+        })
     }
 
     useEffect(()=>{
@@ -21,6 +33,9 @@ function EditProjectPage() {
             console.log(projectFromAPI.data)
             setTitle(projectFromAPI.data.title)
             setDescription(projectFromAPI.data.description)
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     },[])
 

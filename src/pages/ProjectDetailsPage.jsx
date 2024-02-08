@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react'
 
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -16,6 +16,17 @@ function ProjectDetailsPage() {
     const {projectId} = useParams()
     console.log(projectId)
 
+    const navigate = useNavigate()
+
+    function deleteProject(){
+        axios.delete(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`)
+        .then(()=>{
+            navigate('/projects')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
     useEffect(()=>{
         axios.get(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`)
@@ -38,6 +49,7 @@ function ProjectDetailsPage() {
             </div>
         )}
         <Link to={`/projects/${projectId}/edit`}><button>Edit Project</button> </Link> 
+        <button onClick={deleteProject}>Delete Project</button>
     </div>
   )
 }
