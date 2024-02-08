@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react'
 
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -37,6 +37,7 @@ function ProjectDetailsPage() {
                 <p>{project.description}</p>
             </div>
         )}
+        <Link to={`/projects/${projectId}/edit`}><button>Edit Project</button> </Link> 
     </div>
   )
 }

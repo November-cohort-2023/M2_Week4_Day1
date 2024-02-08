@@ -15,6 +15,7 @@ import {useNavigate} from 'react-router-dom'
 */
 function CreateProjectPage() {
 
+
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
 
@@ -26,14 +27,15 @@ function CreateProjectPage() {
 
         const newProject = {title:title,description:description}
 
-        axios.post('https://project-management-api-4641927fee65.herokuapp.com/projects',newProject)
-        .then(()=>{
+        axios.post('https://project-management-api-4641927fee65.herokuapp.com/projects', newProject)
+        .then((response)=>{
+            console.log(response)
             /* 
             extra exercise: instead of going to /projects take the user to the page for the project
             that was just created
             
             */
-            navigate('/projects')
+            navigate(`/projects/${response.data.id}`)
         })
         .catch(()=>{
 

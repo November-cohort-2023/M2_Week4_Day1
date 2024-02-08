@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";     // <== IMPORT
 import ProjectListPage from "./pages/ProjectListPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import CreateProjectPage from "./pages/CreateProjectPage";
+import EditProjectPage from "./pages/EditProjectPage";
  
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Route path="/projects" element={ <ProjectListPage /> } />
         <Route path="/projects/:projectId" element={ <ProjectDetailsPage /> } />
         <Route path="/projects/create" element={ <CreateProjectPage /> } />
+        <Route path="/projects/:projectId/edit" element={ <EditProjectPage /> } />
+
+      
       </Routes>
       
     </div>
