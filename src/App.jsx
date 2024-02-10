@@ -11,6 +11,7 @@ import EditProjectPage from "./pages/EditProjectPage";
 import StudnetListPage from "./pages/StudnetListPage";
  
 function App() {
+    console.log(import.meta.env.VITE_STUDENT_NAME)
   return (
     <div className="App">
       

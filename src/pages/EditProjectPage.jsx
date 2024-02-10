@@ -18,7 +18,7 @@ function EditProjectPage() {
 
         let editedProject = {title:title,description:description}
 
-        axios.put(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`,editedProject)
+        axios.put(`${import.meta.env.VITE_PROJECT_API}/projects/${projectId}`,editedProject)
         .then((updatedProjectFromAPI)=>{
             navigate(`/projects/${updatedProjectFromAPI.data.id}`)
         })
@@ -28,7 +28,7 @@ function EditProjectPage() {
     }
 
     useEffect(()=>{
-        axios.get(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`)
+        axios.get(`${import.meta.env.VITE_PROJECT_API}/projects/${projectId}`)
         .then((projectFromAPI)=>{
             console.log(projectFromAPI.data)
             setTitle(projectFromAPI.data.title)

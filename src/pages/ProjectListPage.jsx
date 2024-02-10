@@ -18,7 +18,7 @@ function ProjectListPage() {
     const [projects,setProjects] = useState([])
 
     useEffect(()=>{
-        axios.get('https://project-management-api-4641927fee65.herokuapp.com/projects')
+        axios.get(`${import.meta.env.VITE_PROJECT_API}/projects`)
         .then((projectsFromAPI)=>{
             setProjects(projectsFromAPI.data)
         })

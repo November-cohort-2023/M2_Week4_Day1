@@ -19,7 +19,7 @@ function ProjectDetailsPage() {
     const navigate = useNavigate()
 
     function deleteProject(){
-        axios.delete(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`)
+        axios.delete(`${import.meta.env.VITE_PROJECT_API}/projects/${projectId}`)
         .then(()=>{
             navigate('/projects')
         })
@@ -29,7 +29,7 @@ function ProjectDetailsPage() {
     }
 
     useEffect(()=>{
-        axios.get(`https://project-management-api-4641927fee65.herokuapp.com/projects/${projectId}`)
+        axios.get(`${import.meta.env.VITE_PROJECT_API}/projects/${projectId}`)
         .then((projectFromAPI)=>{
             console.log(projectFromAPI.data)
             setProject(projectFromAPI.data)
